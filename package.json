@@ -19,7 +19,8 @@
   "author": "Topi Latva-Salo",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
   },
   "devDependencies": {
     "@types/node": "^10.12.10",
