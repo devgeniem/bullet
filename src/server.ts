@@ -2,13 +2,14 @@ import * as express from 'express';
 import * as morgan from 'morgan';
 import * as Knex from 'knex';
 import { Model } from 'objection';
-import Todo from './models/Todo';
+import container from './inversify.config';
+import { ITodoService } from './services';
 
 export const knex = Knex(require('../knexfile').development);
 Model.knex(knex);
 
-// migrate db
-knex.migrate.latest();
+// // migrate db
+// knex.migrate.latest();
 
 
 const enviroment = process.env.NODE_ENV || 'development';
@@ -52,7 +53,8 @@ app.get('/json', (req, res) => {
 });
 
 app.get('/todos', async (req, res) => {
-  const todos = await Todo.query();
+  const todoService = container.get<ITodoService>("ITodoService");
+  const todos = await todoService.getTodos();
   res.send(todos);
 });
 
