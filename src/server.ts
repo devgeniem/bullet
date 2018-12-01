@@ -4,6 +4,7 @@ import * as Knex from 'knex';
 import { Model } from 'objection';
 import container from './inversify.config';
 import { ITodoService } from './services';
+import { IPhotoIntegrationService } from './integrations';
 
 export const knex = Knex(require('../knexfile').development);
 Model.knex(knex);
@@ -56,6 +57,12 @@ app.get('/todos', async (req, res) => {
   const todoService = container.get<ITodoService>("ITodoService");
   const todos = await todoService.getTodos();
   res.send(todos);
+});
+
+app.get('/photos', async (req, res) => {
+  const photoIntegrationService = container.get<IPhotoIntegrationService>("IPhotoIntegrationService");
+  const photos = await photoIntegrationService.getPhotos();
+  res.send(photos);
 });
 
 
