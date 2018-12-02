@@ -1,10 +1,14 @@
-import * as express from 'express';
+import 'reflect-metadata';
+import { createExpressServer } from 'routing-controllers';
+// import * as express from 'express';
 import * as morgan from 'morgan';
 import * as Knex from 'knex';
 import { Model } from 'objection';
 import container from './inversify.config';
 import { ITodoService } from './services';
 import { IPhotoIntegrationService } from './integrations';
+import { TodoController, PhotoController } from './controllers';
+
 
 export const knex = Knex(require('../knexfile').development);
 Model.knex(knex);
@@ -17,54 +21,14 @@ const enviroment = process.env.NODE_ENV || 'development';
 const PORT = process.env.PORT || 3000;
 
 
-const app = express();
+const app = createExpressServer({
+  controllers: [
+    TodoController,
+    PhotoController
+  ]
+});
 
 app.use(morgan('dev'));
-
-app.use((req, res, next) => {
-    const { method, originalUrl } = req; 
-    console.log(`${method} ${originalUrl}`);
-    next();
-});
-
-app.get('/hello', (req, res) => {
-  res.send('Hello, wrold!');
-});
-
-app.get('/info', (req, res) => {
-  res.send('I want to be a real boy!');
-});
-
-app.get('/json', (req, res) => {
-  res.send({
-    sc: 200,
-    json: {
-      ducks: [
-        {
-          name: 'Donald',
-          occupation: 'Postman'
-        },
-        {
-          name: 'Scrooge',
-          occupation: 'Laundering money'
-        }
-      ]
-    }
-  })
-});
-
-app.get('/todos', async (req, res) => {
-  const todoService = container.get<ITodoService>("ITodoService");
-  const todos = await todoService.getTodos();
-  res.send(todos);
-});
-
-app.get('/photos', async (req, res) => {
-  const photoIntegrationService = container.get<IPhotoIntegrationService>("IPhotoIntegrationService");
-  const photos = await photoIntegrationService.getPhotos();
-  res.send(photos);
-});
-
 
 app.listen(PORT, () => {
   console.log(`Server started at ${new Date()} on port ${PORT}!`);
