@@ -1,4 +1,4 @@
-import { Controller, Get } from 'routing-controllers';
+import { Controller, Get, Param } from 'routing-controllers';
 import container from '../inversify.config';
 import { IPhotoIntegrationService } from '../integrations';
 
@@ -10,5 +10,11 @@ export class PhotoController {
   async getAll() {
     const photoIntegrationService = container.get<IPhotoIntegrationService>("IPhotoIntegrationService");
     return await photoIntegrationService.getPhotos();
+  }
+
+  @Get('/:id')
+  async getOneById(@Param('id') id: number) {
+    const photoIntegrationService = container.get<IPhotoIntegrationService>("IPhotoIntegrationService");
+    return await photoIntegrationService.getPhotoById(id);
   }
 }
