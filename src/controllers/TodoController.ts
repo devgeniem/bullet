@@ -1,14 +1,20 @@
 import { Controller, Get } from 'routing-controllers';
 import container from '../inversify.config';
-import { ITodoService } from '../services';
+import { ITodoService, ITodoServiceType } from '../services';
+import { inject, injectable } from 'inversify';
 
 
 @Controller('/todos')
 export class TodoController {
 
+  private todoService: ITodoService;
+
+  constructor(todoService?: ITodoService) {
+    this.todoService = todoService || container.get<ITodoService>(ITodoServiceType);
+  }
+
   @Get('/')
   async getAll() {
-    const todoService = container.get<ITodoService>("ITodoService");
-    return await todoService.getTodos();
+    return await this.todoService.getTodos();
   }
 }
