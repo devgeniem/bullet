@@ -1,7 +1,7 @@
 {
-  "name": "ts-test",
+  "name": "bullet",
   "version": "0.0.1",
-  "description": "A simple test project for creating a RESTful web api with sane architecture using Node.js, TypeScript and Express.js",
+  "description": "A project for creating a RESTful web api boilerplate with sane architecture using Node.js, TypeScript and Express.js",
   "main": "./src/server.ts",
   "scripts": {
     "test": "echo \"Tests have not been setup yet!\" && exit 0",
