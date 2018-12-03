@@ -5,13 +5,10 @@ import { inject, injectable } from 'inversify';
 
 
 @Controller('/todos')
+@injectable()
 export class TodoController {
 
-  private todoService: ITodoService;
-
-  constructor(todoService?: ITodoService) {
-    this.todoService = todoService || container.get<ITodoService>(ITodoServiceType);
-  }
+  constructor(@inject(ITodoServiceType) private todoService: ITodoService) { }
 
   @Get('/')
   async getAll() {

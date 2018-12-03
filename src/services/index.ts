@@ -11,7 +11,8 @@ export interface ITodoService {
 
 @injectable()
 export class TodoService implements ITodoService {
-  @inject(ITodoRepositoryType) private todoRepository : ITodoRepository;
+
+  constructor(@inject(ITodoRepositoryType) private todoRepository : ITodoRepository) { }
 
   async getTodos(): Promise<Todo[]> {
     return await this.todoRepository.getTodos();

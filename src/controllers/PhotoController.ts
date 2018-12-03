@@ -1,24 +1,22 @@
 import { Controller, Get, Param } from 'routing-controllers';
 import container from '../inversify.config';
-import { IPhotoIntegrationService, IPhotoIntegrationServiceType } from '../integrations';
+import { inject, injectable } from 'inversify';
+import { IJSONPlaceholderGatewayType, IJSONPlaceholderGateway } from '../integrations/JSONPlaceholderIntegration/Gateway';
 
 
 @Controller('/photos')
+@injectable()
 export class PhotoController {
 
-  private photoIntegrationService: IPhotoIntegrationService;
-
-  constructor(photoIntegrationService?: IPhotoIntegrationService) {
-    this.photoIntegrationService = photoIntegrationService || container.get<IPhotoIntegrationService>(IPhotoIntegrationServiceType);
-  }
+  constructor(@inject(IJSONPlaceholderGatewayType) private jsonPlaceholderIntegration: IJSONPlaceholderGateway) { }
 
   @Get('/')
   async getAll() {
-    return await this.photoIntegrationService.getPhotos();
+    return await this.jsonPlaceholderIntegration.getJSONPlaceholderPhotos().getPhotos();
   }
 
   @Get('/:id')
   async getOneById(@Param('id') id: number) {
-    return await this.photoIntegrationService.getPhotoById(id);
+    return await this.jsonPlaceholderIntegration.getJSONPlaceholderPhotos().getPhotoById(id);
   }
 }
