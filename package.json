@@ -19,8 +19,10 @@
   "author": "Topi Latva-Salo",
   "license": "MIT",
   "dependencies": {
+    "apisauce": "^1.0.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "inversify": "^5.0.1",
     "knex": "^0.15.2",
