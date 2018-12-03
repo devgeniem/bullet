@@ -8,13 +8,13 @@ import { Model } from 'objection';
 import { TodoController, PhotoController } from './controllers';
 
 
-export const knex = Knex(require('../knexfile').development);
+const enviroment = process.env.NODE_ENV || 'development';
+export const knex = Knex(require('../knexfile')[enviroment]);
 Model.knex(knex);
 
 // // migrate db
 // knex.migrate.latest();
 
-const enviroment = process.env.NODE_ENV || 'development';
 const PORT = process.env.PORT || 3000;
 
 
