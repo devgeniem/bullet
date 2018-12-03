@@ -10,6 +10,8 @@ export interface Photo {
   thumbnailUrl: string;
 }
 
+export const IPhotoIntegrationServiceType = 'IPhotoIntegrationService';
+
 export interface IPhotoIntegrationService {
   getPhotos(): Promise<Array<Photo>>;
   getPhotoById(id): Promise<Photo>;

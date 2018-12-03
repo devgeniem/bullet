@@ -3,6 +3,8 @@ import { injectable } from 'inversify';
 import 'reflect-metadata';
 
 
+export const ITodoRepositoryType = 'ITodoRepository';
+
 export interface ITodoRepository {
   getTodos(): Promise<Array<Todo>>
 }
