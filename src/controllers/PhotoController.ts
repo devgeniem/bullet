@@ -1,5 +1,4 @@
 import { Controller, Get, Param } from 'routing-controllers';
-import container from '../inversify.config';
 import { inject, injectable } from 'inversify';
 import { IJSONPlaceholderGatewayType, IJSONPlaceholderGateway } from '../integrations/JSONPlaceholderIntegration/Gateway';
 
