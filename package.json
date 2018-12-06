@@ -17,8 +17,14 @@
     "web-api"
   ],
   "contributors": [
-    {"name": "Topi Latva-Salo", "email": "topi.latva-salo@geniem.com"},
-    {"name": "Timo Laakso", "email": "timo.laakso@geniem.com"}
+    {
+      "name": "Topi Latva-Salo",
+      "email": "topi.latva-salo@geniem.com"
+    },
+    {
+      "name": "Timo Laakso",
+      "email": "timo.laakso@geniem.com"
+    }
   ],
   "license": "MIT",
   "dependencies": {
