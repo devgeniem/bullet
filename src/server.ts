@@ -5,7 +5,7 @@ import { createExpressServer, useContainer } from 'routing-controllers';
 import * as morgan from 'morgan';
 import * as Knex from 'knex';
 import { Model } from 'objection';
-import { TodoController, PhotoController } from './controllers';
+import { TodoController, PhotoController, UserController } from './controllers';
 
 
 dotenv.config();
@@ -23,7 +23,8 @@ useContainer(container);
 const app = createExpressServer({
   controllers: [
     TodoController,
-    PhotoController
+    PhotoController,
+    UserController
   ]
 });
 
