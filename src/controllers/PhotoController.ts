@@ -1,9 +1,9 @@
-import { Controller, Get, Param } from 'routing-controllers';
+import { JsonController, Get, Param } from 'routing-controllers';
 import { inject, injectable } from 'inversify';
 import { IJSONPlaceholderGatewayType, IJSONPlaceholderGateway } from '../integrations/JSONPlaceholderIntegration/Gateway';
 
 
-@Controller('/photos')
+@JsonController('/photos')
 @injectable()
 export class PhotoController {
 
