@@ -1,9 +1,9 @@
-import { Controller, Get } from 'routing-controllers';
+import { JsonController, Get } from 'routing-controllers';
 import { ITodoService, ITodoServiceType } from '../services';
 import { inject, injectable } from 'inversify';
 
 
-@Controller('/todos')
+@JsonController('/todos')
 @injectable()
 export class TodoController {
 
