@@ -1,3 +1,11 @@
+![](https://www.geniem.fi/app/themes/geniem/assets/images/geniem_logo.svg)
+
+TypeScripted boilerplate REST backend with a layered architecture.
+
+## Authors
+- Topi Latva-Salo (topi.latva-salo@geniem.com)
+- Timo Laakso (timo.laakso@geniem.com)
+
 ## Running and development
 
 1. Clone the repository

@@ -16,7 +16,10 @@
     "typescript",
     "web-api"
   ],
-  "author": "Topi Latva-Salo",
+  "contributors": [
+    {"name": "Topi Latva-Salo", "email": "topi.latva-salo@geniem.com"},
+    {"name": "Timo Laakso", "email": "timo.laakso@geniem.com"}
+  ],
   "license": "MIT",
   "dependencies": {
     "apisauce": "^1.0.0",

@@ -1,0 +1,1 @@
+Example for integrating a larger system using the [Gateway pattern](https://martinfowler.com/eaaCatalog/gateway.html)
