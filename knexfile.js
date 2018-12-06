@@ -1,5 +1,8 @@
-// Update with your config settings.
+// Config environment variables using dotenv
+require('dotenv').config();
 
+
+// Update with your config settings.
 module.exports = {
 
   development: {
