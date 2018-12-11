@@ -1,4 +1,4 @@
-import { Container } from "inversify";
+import { Container, interfaces } from "inversify";
 import { makeLoggerMiddleware } from 'inversify-logger-middleware';
 import { ITodoRepositoryType, ITodoRepository, TodoRepository } from "./repositories";
 import { ITodoServiceType, ITodoService, TodoService } from './services';
@@ -7,6 +7,16 @@ import { IJSONPlaceholderGateway, IJSONPlaceholderGatewayType, JSONPlaceholderGa
 import { IJSONPlaceholderPhotos, IJSONPlaceholderPhotosType, JSONPlaceholderPhotos } from "./integrations/JSONPlaceholderIntegration/Photos";
 import { IJSONPlaceholderPosts, IJSONPlaceholderPostsType, JSONPlaceholderPosts } from "./integrations/JSONPlaceholderIntegration/Posts";
 import { IReqResIn, IReqResInType, ReqResIn } from "./integrations/ReqResIn/ReqResIn";
+import winston = require("winston");
+import createLogger from "./config/winston";
+
+const getLoggerName = (param) => {
+  if (typeof param === 'function' && param.name !== '') {
+    return param.name;
+  }
+  return param;
+}
+
 
 const container = new Container();
 container.bind<ITodoRepository>(ITodoRepositoryType).to(TodoRepository);
@@ -18,6 +28,8 @@ container.bind<PhotoController>(PhotoController).toSelf();
 container.bind<TodoController>(TodoController).toSelf();
 container.bind<UserController>(UserController).toSelf();
 container.bind<IReqResIn>(IReqResInType).to(ReqResIn);
+container.bind<interfaces.Factory<winston.Logger>>('LoggerFactoryType').toFactory<winston.Logger>(() => (param) => createLogger(getLoggerName(param)));
+
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
   container.applyMiddleware(makeLoggerMiddleware());
