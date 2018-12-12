@@ -1,24 +1,31 @@
 import { JsonController, Get } from 'routing-controllers';
 import { ITodoService, ITodoServiceType } from '../services';
 import { inject, injectable } from 'inversify';
-import * as winston from 'winston';
+import { ILogger, ILoggerFactoryType, ILoggerFactory } from '../logging';
 
 
 @JsonController('/todos')
 @injectable()
 export class TodoController {
-  private todoService : ITodoService;
-  private logger: any;
+  private logger: ILogger;
 
-  constructor(@inject(ITodoServiceType) todoService: ITodoService, @inject('LoggerFactoryType') loggerFactory: any) {
-    this.todoService = todoService;
-    this.logger = loggerFactory(TodoController);
+  constructor(
+    @inject(ITodoServiceType) private todoService: ITodoService,
+    @inject(ILoggerFactoryType) loggerFactory: ILoggerFactory
+  ) {
+    this.logger = loggerFactory.createLogger(this);
   }
 
   @Get('/')
   async getAll() {
- 
-    this.logger.info('I get called here.');
+    this.logger.info('Getting todos...');
+    this.logger.warn('This is a warning');
+
+    try {
+      throw new Error('An error occurred while trying to fetch todos!');
+    } catch (e) {
+      this.logger.error(e.message);
+    }
     return await this.todoService.getTodos();
   }
 }
