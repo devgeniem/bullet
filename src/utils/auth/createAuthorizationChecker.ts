@@ -1,5 +1,5 @@
 import { Action, Get } from "routing-controllers";
-import { ILoggerFactory, ILoggerFactoryType } from "../logging";
+import { ILoggerFactory, ILoggerFactoryType } from "../LoggerFactory";
 
 
 export default (iocContainer: { get<T>(someClass: any): any }) => async (action: Action, permissions: string[]) => {

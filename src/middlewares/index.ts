@@ -1,1 +1,1 @@
-export { ApiAccessCheck } from './RequireApikey';
+export { ApiAccessCheck } from './ApiAccessCheck';

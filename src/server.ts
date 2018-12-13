@@ -6,7 +6,7 @@ import * as morgan from 'morgan';
 import * as Knex from 'knex';
 import { Model } from 'objection';
 import { TodoController, PhotoController, UserController } from './controllers';
-import createAuthorizationChecker from './auth/createAuthorizationChecker';
+import createAuthorizationChecker from './utils/auth/createAuthorizationChecker';
 import { ApiAccessCheck } from './middlewares';
 
 

@@ -1,7 +1,7 @@
 import { JsonController, Get } from 'routing-controllers';
 import { ITodoService, ITodoServiceType } from '../services';
 import { inject, injectable } from 'inversify';
-import { ILogger, ILoggerFactoryType, ILoggerFactory } from '../logging';
+import { ILogger, ILoggerFactoryType, ILoggerFactory } from '../utils/LoggerFactory';
 
 
 @JsonController('/todos')

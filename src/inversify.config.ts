@@ -7,7 +7,7 @@ import { IJSONPlaceholderGateway, IJSONPlaceholderGatewayType, JSONPlaceholderGa
 import { IJSONPlaceholderPhotos, IJSONPlaceholderPhotosType, JSONPlaceholderPhotos } from "./integrations/JSONPlaceholderIntegration/Photos";
 import { IJSONPlaceholderPosts, IJSONPlaceholderPostsType, JSONPlaceholderPosts } from "./integrations/JSONPlaceholderIntegration/Posts";
 import { IReqResIn, IReqResInType, ReqResIn } from "./integrations/ReqResIn/ReqResIn";
-import { ILoggerFactory, ILoggerFactoryType, LoggerFactory } from './logging';
+import { ILoggerFactory, ILoggerFactoryType, LoggerFactory } from './utils/LoggerFactory';
 import { ApiAccessCheck } from "./middlewares";
 
 
