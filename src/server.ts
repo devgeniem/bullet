@@ -1,11 +1,13 @@
 import * as dotenv from 'dotenv';
 import 'reflect-metadata';
 import container from './inversify.config';
-import { createExpressServer, useContainer } from 'routing-controllers';
+import { createExpressServer, useContainer, Action } from 'routing-controllers';
 import * as morgan from 'morgan';
 import * as Knex from 'knex';
 import { Model } from 'objection';
 import { TodoController, PhotoController, UserController } from './controllers';
+import { ILoggerFactory, ILoggerFactoryType } from './logging';
+import createAuthorizationChecker from './auth/createAuthorizationChecker';
 
 
 dotenv.config();
@@ -25,7 +27,8 @@ const app = createExpressServer({
     TodoController,
     PhotoController,
     UserController
-  ]
+  ],
+  authorizationChecker: createAuthorizationChecker(container)
 });
 
 app.use(morgan('dev'));
