@@ -1,4 +1,4 @@
-import { JsonController, Get, Authorized } from 'routing-controllers';
+import { JsonController, Get } from 'routing-controllers';
 import { ITodoService, ITodoServiceType } from '../services';
 import { inject, injectable } from 'inversify';
 import { ILogger, ILoggerFactoryType, ILoggerFactory } from '../logging';
@@ -17,7 +17,6 @@ export class TodoController {
   }
 
   @Get('/')
-  @Authorized()
   async getAll() {
     this.logger.info('Getting todos...');
     this.logger.warn('This is a warning');
