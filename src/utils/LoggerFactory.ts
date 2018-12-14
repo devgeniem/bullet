@@ -1,6 +1,6 @@
 import * as winston from 'winston';
 import { Format, FormatWrap } from 'logform';
-import { Logger as ILogger } from 'winston';
+import { Logger as ILogger } from 'winston'; // tslint:disable-line
 import { injectable } from 'inversify';
 import chalk from 'chalk';
 
@@ -35,26 +35,26 @@ const colorizingFormatter = (type: any): Format => winston.format.combine(
   winston.format.colorize(),
   winston.format.timestamp(),
   getName(type)(),
-  winston.format.printf(info => `${chalk.cyan(info.timestamp)} ${chalk.magenta(`[${info.name}]`)} ${info.level}: ${info.message}`)
+  winston.format.printf(info => `${chalk.cyan(info.timestamp)} ${chalk.magenta(`[${info.name}]`)} ${info.level}: ${info.message}`) //tslint:disable-line
 );
 
 export const createLogger = (type: any): ILogger => winston.createLogger({
   level: 'info',
   format: colorizingFormatter(type),
   transports: [
-    new winston.transports.Console()
-  ]
+    new winston.transports.Console(),
+  ],
 });
 
 export const ILoggerFactoryType = 'ILoggerFactory';
 
 export interface ILoggerFactory {
   createLogger(type: any): ILogger;
-};
+}
 
 @injectable()
 export class LoggerFactory implements ILoggerFactory {
   createLogger(type: any): ILogger {
     return createLogger(type);
   }
-};
+}

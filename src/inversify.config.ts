@@ -1,14 +1,14 @@
-import { Container, interfaces } from "inversify";
+import { Container, interfaces } from 'inversify';
 import { makeLoggerMiddleware } from 'inversify-logger-middleware';
-import { ITodoRepositoryType, ITodoRepository, TodoRepository } from "./repositories";
+import { ITodoRepositoryType, ITodoRepository, TodoRepository } from './repositories';
 import { ITodoServiceType, ITodoService, TodoService } from './services';
-import { PhotoController, TodoController, UserController } from "./controllers";
-import { IJSONPlaceholderGateway, IJSONPlaceholderGatewayType, JSONPlaceholderGateway } from "./integrations/JSONPlaceholderIntegration/Gateway";
-import { IJSONPlaceholderPhotos, IJSONPlaceholderPhotosType, JSONPlaceholderPhotos } from "./integrations/JSONPlaceholderIntegration/Photos";
-import { IJSONPlaceholderPosts, IJSONPlaceholderPostsType, JSONPlaceholderPosts } from "./integrations/JSONPlaceholderIntegration/Posts";
-import { IReqResIn, IReqResInType, ReqResIn } from "./integrations/ReqResIn/ReqResIn";
+import { PhotoController, TodoController, UserController } from './controllers';
+import { IJSONPlaceholderGateway, IJSONPlaceholderGatewayType, JSONPlaceholderGateway } from './integrations/JSONPlaceholderIntegration/Gateway';
+import { IJSONPlaceholderPhotos, IJSONPlaceholderPhotosType, JSONPlaceholderPhotos } from './integrations/JSONPlaceholderIntegration/Photos';
+import { IJSONPlaceholderPosts, IJSONPlaceholderPostsType, JSONPlaceholderPosts } from './integrations/JSONPlaceholderIntegration/Posts';
+import { IReqResIn, IReqResInType, ReqResIn } from './integrations/ReqResIn/ReqResIn';
 import { ILoggerFactory, ILoggerFactoryType, LoggerFactory } from './utils/LoggerFactory';
-import { ApiAccessCheck } from "./middlewares";
+import { ApiAccessCheck } from './middlewares';
 
 
 const container = new Container();

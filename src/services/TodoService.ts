@@ -6,7 +6,7 @@ import { injectable, inject } from 'inversify';
 export const ITodoServiceType = 'ITodoService';
 
 export interface ITodoService {
-  getTodos(): Promise<Array<Todo>>;
+  getTodos(): Promise<Todo[]>;
 }
 
 @injectable()
@@ -17,4 +17,5 @@ export class TodoService implements ITodoService {
   async getTodos(): Promise<Todo[]> {
     return await this.todoRepository.getTodos();
   }
-};
+
+}

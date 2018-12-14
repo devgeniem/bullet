@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv';
 import 'reflect-metadata';
-import container from './inversify.config';
+import iocContainer from './inversify.config';
 import { createExpressServer, useContainer, Action } from 'routing-controllers';
 import * as morgan from 'morgan';
 import * as Knex from 'knex';
@@ -20,16 +20,16 @@ Model.knex(knex);
 
 const PORT = process.env.PORT || 3001;
 
-useContainer(container);
+useContainer(iocContainer);
 
 const app = createExpressServer({
   controllers: [
     TodoController,
     PhotoController,
-    UserController
+    UserController,
   ],
   middlewares: [ApiAccessCheck],
-  authorizationChecker: createAuthorizationChecker(container)
+  authorizationChecker: createAuthorizationChecker(iocContainer),
 });
 
 app.use(morgan('dev'));

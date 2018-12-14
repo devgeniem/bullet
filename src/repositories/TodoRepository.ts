@@ -6,12 +6,14 @@ import 'reflect-metadata';
 export const ITodoRepositoryType = 'ITodoRepository';
 
 export interface ITodoRepository {
-  getTodos(): Promise<Array<Todo>>
+  getTodos(): Promise<Todo[]>;
 }
 
 @injectable()
 export class TodoRepository implements ITodoRepository {
+
   async getTodos(): Promise<Todo[]> {
     return await Todo.query();
   }
+
 }
