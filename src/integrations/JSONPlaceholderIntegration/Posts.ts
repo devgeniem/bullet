@@ -12,7 +12,7 @@ export interface Post {
 export const IJSONPlaceholderPostsType = 'IJSONPlaceholderPosts';
 
 export interface IJSONPlaceholderPosts {
-  getPosts(): Promise<Array<Post>>;
+  getPosts(): Promise<Post[]>;
 }
 
 @injectable()

@@ -3,7 +3,7 @@ import { create } from 'apisauce';
 
 const api = create({
   baseURL: 'https://jsonplaceholder.typicode.com',
-  headers: { 'Accept': 'application/json' }
+  headers: { Accept: 'application/json' },
 });
 
 export const getPhotos = async () : Promise<any> => {
@@ -16,4 +16,4 @@ export const getPhotoById = async (id: number): Promise<any> => {
 
 export const getPosts = async () : Promise<any> => {
   return await api.get('/posts?_limit=20');
-}
+};

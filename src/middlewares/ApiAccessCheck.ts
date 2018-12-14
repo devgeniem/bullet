@@ -1,10 +1,12 @@
-import {Middleware, ExpressMiddlewareInterface} from "routing-controllers";
-import { injectable, inject } from "inversify";
-import { ILoggerFactoryType, ILogger, ILoggerFactory } from "../utils/LoggerFactory";
+import { Middleware, ExpressMiddlewareInterface } from 'routing-controllers';
+import { injectable, inject } from 'inversify';
+import { ILoggerFactoryType, ILogger, ILoggerFactory } from '../utils/LoggerFactory';
 
-@Middleware({ type: "before" })
+
+@Middleware({ type: 'before' })
 @injectable()
 export class ApiAccessCheck implements ExpressMiddlewareInterface {
+
   private logger: ILogger;
 
   constructor(@inject(ILoggerFactoryType) loggerFactory: ILoggerFactory) {
@@ -19,4 +21,5 @@ export class ApiAccessCheck implements ExpressMiddlewareInterface {
     }
     next();
   }
+
 }

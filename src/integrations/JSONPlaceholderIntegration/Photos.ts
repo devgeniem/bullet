@@ -13,7 +13,7 @@ export interface Photo {
 export const IJSONPlaceholderPhotosType = 'IJSONPlaceholderPhotos';
 
 export interface IJSONPlaceholderPhotos {
-  getPhotos(): Promise<Array<Photo>>;
+  getPhotos(): Promise<Photo[]>;
   getPhotoById(id): Promise<Photo>;
 }
 

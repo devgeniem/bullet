@@ -6,12 +6,12 @@ import { ILogger, ILoggerFactoryType, ILoggerFactory } from '../utils/LoggerFact
 
 @JsonController('/todos')
 @injectable()
-export class TodoController {
+export class TodoController{
   private logger: ILogger;
 
   constructor(
     @inject(ITodoServiceType) private todoService: ITodoService,
-    @inject(ILoggerFactoryType) loggerFactory: ILoggerFactory
+    @inject(ILoggerFactoryType) loggerFactory: ILoggerFactory,
   ) {
     this.logger = loggerFactory.createLogger(this);
   }

@@ -1,6 +1,6 @@
-import { injectable, inject } from "inversify";
-import { IJSONPlaceholderPhotos, IJSONPlaceholderPhotosType } from "./Photos";
-import { IJSONPlaceholderPostsType, IJSONPlaceholderPosts } from "./Posts";
+import { injectable, inject } from 'inversify';
+import { IJSONPlaceholderPhotos, IJSONPlaceholderPhotosType } from './Photos';
+import { IJSONPlaceholderPostsType, IJSONPlaceholderPosts } from './Posts';
 
 
 export const IJSONPlaceholderGatewayType = 'IJSONPlaceholderGateway';
@@ -15,9 +15,9 @@ export class JSONPlaceholderGateway implements IJSONPlaceholderGateway {
 
   constructor(
     @inject(IJSONPlaceholderPhotosType) private photos : IJSONPlaceholderPhotos,
-    @inject(IJSONPlaceholderPostsType) private posts: IJSONPlaceholderPosts
+    @inject(IJSONPlaceholderPostsType) private posts: IJSONPlaceholderPosts,
   ) { }
-  
+
   getJSONPlaceholderPhotos(): IJSONPlaceholderPhotos {
     return this.photos;
   }

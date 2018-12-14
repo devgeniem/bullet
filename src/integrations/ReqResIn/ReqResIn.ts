@@ -12,7 +12,7 @@ export interface User {
 export const IReqResInType = 'IReqResInType';
 
 export interface IReqResIn {
-  getUsers(): Promise<Array<User>>;
+  getUsers(): Promise<User[]>;
 }
 
 @injectable()

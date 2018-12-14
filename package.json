@@ -5,11 +5,15 @@
   "main": "./src/server.ts",
   "scripts": {
     "test": "echo \"Tests have not been setup yet!\" && exit 0",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
     "compile": "tsc",
     "prerun": "npm run compile",
     "run": "node ./build/server.js",
     "start": "tsc-watch --onSuccess \"node ./build/server.js\" --onFailure \"echo Compilation failed! \""
   },
+  "pre-commit": [
+    "lint"
+  ],
   "keywords": [
     "node",
     "express",
@@ -57,7 +61,10 @@
     "@types/node": "^10.12.10",
     "inversify-logger-middleware": "^3.1.0",
     "npm-run-all": "^4.1.5",
+    "pre-commit": "^1.2.2",
     "tsc-watch": "^1.0.31",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.1",
     "typescript": "^3.1.6"
   }
 }

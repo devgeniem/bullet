@@ -11,7 +11,7 @@ export class PhotoController {
 
   constructor(
     @inject(IJSONPlaceholderGatewayType) private jsonPlaceholderIntegration: IJSONPlaceholderGateway,
-    @inject(ILoggerFactoryType) loggerFactory: ILoggerFactory 
+    @inject(ILoggerFactoryType) loggerFactory: ILoggerFactory,
   ) {
     this.logger = loggerFactory.createLogger(this);
   }

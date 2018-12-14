@@ -16,7 +16,7 @@ export default class Todo extends Model {
       id: { type: 'integer' },
       title: { type: 'string', minLength: 1, maxLength: 63 },
       description: { type: 'string', minLength: 1, maxLength: 255 },
-      due: { type: 'string', format: 'date' }
-    }
-  }
+      due: { type: 'string', format: 'date' },
+    },
+  };
 }
