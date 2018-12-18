@@ -4,7 +4,7 @@ import { ILogger, ILoggerFactory, ILoggerFactoryType } from '../utils/LoggerFact
 
 @Middleware({ type: 'after' })
 @injectable()
-export class ErrorHandler implements ExpressErrorMiddlewareInterface {
+export class ErrorLogger implements ExpressErrorMiddlewareInterface {
 
   private logger: ILogger;
 
@@ -13,9 +13,8 @@ export class ErrorHandler implements ExpressErrorMiddlewareInterface {
   }
 
   error(error: any, request: any, response: any, next: (err?: any) => any) {
-    console.log(error.name, error.httpCode, error.message);
-    this.logger.warn('moro');
-    this.logger.warn('error.message', error.httpCode);
+    // TODO
+    this.logger.error(`CODE: ${error.httpCode} NAME: ${error.name} MESSAGE: ${error.message}`);
     next();
   }
 }

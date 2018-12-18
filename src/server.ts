@@ -7,7 +7,7 @@ import * as Knex from 'knex';
 import { Model } from 'objection';
 import { TodoController, PhotoController, UserController } from './controllers';
 import createAuthorizationChecker from './utils/auth/createAuthorizationChecker';
-import { ApiAccessCheck, ErrorHandler } from './middlewares';
+import { ApiAccessCheck, ErrorLogger } from './middlewares';
 
 
 dotenv.config();
@@ -30,10 +30,9 @@ const app = createExpressServer({
   ],
   middlewares: [
     ApiAccessCheck,
-    ErrorHandler,
+    ErrorLogger,
   ],
   authorizationChecker: createAuthorizationChecker(iocContainer),
-  defaultErrorHandler: false,
 });
 
 app.use(morgan('dev'));

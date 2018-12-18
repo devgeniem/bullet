@@ -1,4 +1,4 @@
-import { Middleware, ExpressMiddlewareInterface, HttpError } from 'routing-controllers';
+import { Middleware, ExpressMiddlewareInterface, UnauthorizedError } from 'routing-controllers';
 import { injectable, inject } from 'inversify';
 import { ILoggerFactoryType, ILogger, ILoggerFactory } from '../utils/LoggerFactory';
 
@@ -17,7 +17,7 @@ export class ApiAccessCheck implements ExpressMiddlewareInterface {
     const { apikey } = request.headers;
     if (apikey !== process.env.APIKEY) {
       this.logger.warn(`${apikey} does not match ${process.env.APIKEY}`);
-      throw new HttpError(500, 'INVALID_API_KEY');
+      throw new UnauthorizedError('INVALID_API_KEY');
     }
     next();
   }
