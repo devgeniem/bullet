@@ -8,7 +8,7 @@ import { IJSONPlaceholderPhotos, IJSONPlaceholderPhotosType, JSONPlaceholderPhot
 import { IJSONPlaceholderPosts, IJSONPlaceholderPostsType, JSONPlaceholderPosts } from './integrations/JSONPlaceholderIntegration/Posts';
 import { IReqResIn, IReqResInType, ReqResIn } from './integrations/ReqResIn/ReqResIn';
 import { ILoggerFactory, ILoggerFactoryType, LoggerFactory } from './utils/LoggerFactory';
-import { ApiAccessCheck } from './middlewares';
+import { ApiAccessCheck, ErrorHandler } from './middlewares';
 
 
 const container = new Container();
@@ -23,6 +23,7 @@ container.bind<UserController>(UserController).toSelf();
 container.bind<IReqResIn>(IReqResInType).to(ReqResIn);
 container.bind<ILoggerFactory>(ILoggerFactoryType).to(LoggerFactory).inSingletonScope();
 container.bind<ApiAccessCheck>(ApiAccessCheck).toSelf();
+container.bind<ErrorHandler>(ErrorHandler).toSelf();
 
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
