@@ -4,7 +4,7 @@ import { ILogger, ILoggerFactory, ILoggerFactoryType } from '../utils/LoggerFact
 
 @Middleware({ type: 'after' })
 @injectable()
-export class ErrorLogger implements ExpressErrorMiddlewareInterface {
+export class ErrorHandler implements ExpressErrorMiddlewareInterface {
 
   private logger: ILogger;
 
@@ -15,6 +15,7 @@ export class ErrorLogger implements ExpressErrorMiddlewareInterface {
   error(error: any, request: any, response: any, next: (err?: any) => any) {
     // TODO
     this.logger.error(`CODE: ${error.httpCode} NAME: ${error.name} MESSAGE: ${error.message}`);
+    if (error) response.status(500).send({ httpCode: error.httpCode, message: error.message, name: error.name });
     next();
   }
 }

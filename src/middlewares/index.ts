@@ -1,2 +1,2 @@
 export { ApiAccessCheck } from './ApiAccessCheck';
-export { ErrorLogger } from './ErrorLogger';
+export { ErrorHandler } from './ErrorHandler';
