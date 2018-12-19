@@ -27,7 +27,7 @@ export class JSONPlaceholderPhotos implements IJSONPlaceholderPhotos {
   }
 
   async getPhotoById(id: number): Promise<Photo> {
-    const response = await api.getPhotos();
+    const response = await api.getPhotoById(id);
     if (!response.ok) throw new Error(`Could not retrieve photo ${id}.`);
     return response.data;
   }

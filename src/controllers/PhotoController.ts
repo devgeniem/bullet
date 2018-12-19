@@ -1,4 +1,4 @@
-import { JsonController, Get, Param, Authorized } from 'routing-controllers';
+import { JsonController, Get, Param } from 'routing-controllers';
 import { inject, injectable } from 'inversify';
 import { IJSONPlaceholderGatewayType, IJSONPlaceholderGateway } from '../integrations/JSONPlaceholderIntegration/Gateway';
 import { ILoggerFactoryType, ILoggerFactory, ILogger } from '../utils/LoggerFactory';
