@@ -14,8 +14,15 @@ export class ErrorHandler implements ExpressErrorMiddlewareInterface {
 
   error(error: any, request: any, response: any, next: (err?: any) => any) {
     // TODO
-    this.logger.error(`CODE: ${error.httpCode} NAME: ${error.name} MESSAGE: ${error.message}`);
-    if (error) response.status(500).send({ httpCode: error.httpCode, message: error.message, name: error.name });
+
+    if (error) {
+      const httpCode = error.httpCode ? error.httpCode : 500;
+      const message  = error.message ? error.message : 'INTERNAL_SERVER_ERROR';
+      const name = error.name === 'Error' ? 'InternalServerError' : error.name;
+
+      this.logger.error(`${httpCode} ${name} ${message}`);
+      response.status(httpCode).send({ httpCode, message, name });
+    }
     next();
   }
 }
