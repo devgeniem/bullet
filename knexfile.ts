@@ -1,4 +1,6 @@
 // Config environment variables using dotenv
+require("ts-node/register")
+
 require('dotenv').config();
 
 

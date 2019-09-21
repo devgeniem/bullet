@@ -1,4 +1,6 @@
-exports.seed = function(knex, Promise) {
+import * as Knex from 'knex';
+
+export function seed(knex: Knex) {
   // Deletes ALL existing entries
   return knex('todos').del()
     .then(function () {
