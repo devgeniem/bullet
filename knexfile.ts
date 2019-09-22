@@ -1,52 +1,25 @@
 // Config environment variables using dotenv
+// tslint:disable no-var-requires no-implicit-dependencies no-submodule-imports
+
+// TODO don't do this in prod
 require("ts-node/register");
 
 require("dotenv").config();
 
 // Update with your config settings.
 module.exports = {
-  development: {
-    client: "mysql",
-    connection: {
-      host: process.env.MYSQL_HOST,
-      user: process.env.MYSQL_USER,
-      password: process.env.MYSQL_PASSWORD,
-      database: process.env.MYSQL_DATABASE
-    },
-    seeds: {
-      directory: "./seeds/dev"
-    }
+  client: "mysql",
+  connection: {
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE
+  },
+  migrations: {
+    tableName: 'migrations',
+    stub: 'migrations/template.ts'
+  },
+  seeds: {
+    directory: "./seeds/dev"
   }
-
-  // staging: {
-  //   client: 'postgresql',
-  //   connection: {
-  //     database: 'my_db',
-  //     user:     'username',
-  //     password: 'password'
-  //   },
-  //   pool: {
-  //     min: 2,
-  //     max: 10
-  //   },
-  //   migrations: {
-  //     tableName: 'knex_migrations'
-  //   }
-  // },
-
-  // production: {
-  //   client: 'postgresql',
-  //   connection: {
-  //     database: 'my_db',
-  //     user:     'username',
-  //     password: 'password'
-  //   },
-  //   pool: {
-  //     min: 2,
-  //     max: 10
-  //   },
-  //   migrations: {
-  //     tableName: 'knex_migrations'
-  //   }
-  // }
 };

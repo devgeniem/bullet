@@ -12,10 +12,9 @@ import { ApiAccessCheck, ErrorHandler } from "./middlewares";
 import createAuthorizationChecker from "./utils/auth/createAuthorizationChecker";
 
 dotenv.config();
-const enviroment = process.env.NODE_ENV || "development";
 // TODO knex should be dependency injected
 // tslint:disable-next-line: no-var-requires
-export const knex = Knex(require("../knexfile")[enviroment]);
+export const knex = Knex(require("../knexfile"));
 Model.knex(knex);
 
 const PORT = process.env.PORT || 3001;
