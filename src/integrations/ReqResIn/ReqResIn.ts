@@ -18,7 +18,9 @@ export interface IReqResIn {
 export class ReqResIn implements IReqResIn {
   public async getUsers(): Promise<User[]> {
     const response = await api.getUsers();
-    if (!response.ok) { throw new Error("Could not retrieve users from ReqRes."); }
+    if (!response.ok) {
+      throw new Error("Could not retrieve users from ReqRes.");
+    }
     return response.data;
   }
 }

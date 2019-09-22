@@ -18,7 +18,12 @@ export class ErrorHandler implements ExpressErrorMiddlewareInterface {
     this.logger = loggerFactory.createLogger(this);
   }
 
-  public error(error: any, request: any, response: any, next: (err?: any) => any) {
+  public error(
+    error: any,
+    request: any,
+    response: any,
+    next: (err?: any) => any
+  ) {
     // TODO
 
     if (error) {

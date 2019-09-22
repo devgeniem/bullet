@@ -3,8 +3,7 @@ import { injectable } from "inversify";
 import { Format, FormatWrap } from "logform";
 import * as winston from "winston";
 
-export type ILogger = winston.Logger
-
+export type ILogger = winston.Logger;
 
 const nameOf = (param: any): string => {
   switch (typeof param) {

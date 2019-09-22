@@ -18,7 +18,9 @@ export interface IJSONPlaceholderPosts {
 export class JSONPlaceholderPosts implements IJSONPlaceholderPosts {
   public async getPosts(): Promise<Post[]> {
     const response = await api.getPosts();
-    if (!response.ok) { throw new Error("Could not retrieve posts."); }
+    if (!response.ok) {
+      throw new Error("Could not retrieve posts.");
+    }
     return response.data;
   }
 }

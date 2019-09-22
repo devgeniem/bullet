@@ -1,7 +1,6 @@
 import { Model } from "objection";
 
 export default class Todo extends Model {
-
   public static tableName = "todos";
 
   public static jsonSchema = {
