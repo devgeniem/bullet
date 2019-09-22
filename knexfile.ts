@@ -16,8 +16,8 @@ module.exports = {
     database: process.env.MYSQL_DATABASE
   },
   migrations: {
-    tableName: 'migrations',
-    stub: 'migrations/template.ts'
+    tableName: "migrations",
+    stub: "migrations/template.ts"
   },
   seeds: {
     directory: "./seeds/dev"
