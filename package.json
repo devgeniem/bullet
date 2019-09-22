@@ -9,9 +9,12 @@
     "compile": "tsc",
     "prerun": "npm run compile",
     "run": "node ./build/server.js",
-    "start": "tsc-watch --onSuccess \"node ./build/server.js\" --onFailure \"echo Compilation failed! \""
+    "start": "tsc-watch --onSuccess \"node ./build/server.js\" --onFailure \"echo Compilation failed! \"",
+    "prettier": "node node_modules/prettier/bin-prettier.js --write '**/*.ts'"
+
   },
   "pre-commit": [
+    "prettier",
     "lint"
   ],
   "keywords": [
