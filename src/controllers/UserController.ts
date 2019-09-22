@@ -1,16 +1,14 @@
-import { JsonController, Get } from 'routing-controllers';
-import { IReqResInType, IReqResIn } from '../integrations/ReqResIn/ReqResIn';
-import { inject, injectable } from 'inversify';
+import { inject, injectable } from "inversify";
+import { Get, JsonController } from "routing-controllers";
+import { IReqResIn, IReqResInType } from "../integrations/ReqResIn/ReqResIn";
 
-
-@JsonController('/users')
+@JsonController("/users")
 @injectable()
 export class UserController {
+  constructor(@inject(IReqResInType) private reqResIntegration: IReqResIn) {}
 
-  constructor(@inject(IReqResInType) private reqResIntegration: IReqResIn) { }
-
-  @Get('/')
-  async getAll() {
-    return await this.reqResIntegration.getUsers();
+  @Get("/")
+  public async getAll() {
+    return this.reqResIntegration.getUsers();
   }
 }

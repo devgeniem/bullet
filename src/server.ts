@@ -1,44 +1,38 @@
-import * as dotenv from 'dotenv';
-import 'reflect-metadata';
-import iocContainer from './inversify.config';
-import { createExpressServer, useContainer, Action } from 'routing-controllers';
-import * as morgan from 'morgan';
-import * as Knex from 'knex';
-import { Model } from 'objection';
-import { TodoController, PhotoController, UserController } from './controllers';
-import createAuthorizationChecker from './utils/auth/createAuthorizationChecker';
-import { ApiAccessCheck, ErrorHandler } from './middlewares';
+import "reflect-metadata";
 
+import * as dotenv from "dotenv";
+import * as Knex from "knex";
+import * as morgan from "morgan";
+import { Model } from "objection";
+
+import { createExpressServer, useContainer } from "routing-controllers";
+import { PhotoController, TodoController, UserController } from "./controllers";
+import iocContainer from "./inversify.config";
+import { ApiAccessCheck, ErrorHandler } from "./middlewares";
+import createAuthorizationChecker from "./utils/auth/createAuthorizationChecker";
 
 dotenv.config();
-const enviroment = process.env.NODE_ENV || 'development';
-export const knex = Knex(require('../knexfile')[enviroment]);
+const enviroment = process.env.NODE_ENV || "development";
+// TODO knex should be dependency injected
+// tslint:disable-next-line: no-var-requires
+export const knex = Knex(require("../knexfile")[enviroment]);
 Model.knex(knex);
-
-// // migrate db
-// knex.migrate.latest();
 
 const PORT = process.env.PORT || 3001;
 
 useContainer(iocContainer);
 
 const app = createExpressServer({
-  controllers: [
-    TodoController,
-    PhotoController,
-    UserController,
-  ],
-  middlewares: [
-    ApiAccessCheck,
-    ErrorHandler,
-  ],
+  controllers: [TodoController, PhotoController, UserController],
+  middlewares: [ApiAccessCheck, ErrorHandler],
   authorizationChecker: createAuthorizationChecker(iocContainer),
-  defaultErrorHandler: false,
+  defaultErrorHandler: false
 });
 
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 
 app.listen(PORT, () => {
+  // tslint:disable-next-line: no-console
   console.log(`Server started at ${new Date()} on port ${PORT}!`);
 });
 

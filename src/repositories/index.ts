@@ -1,1 +1,5 @@
-export { ITodoRepository, ITodoRepositoryType, TodoRepository } from './TodoRepository';
+export {
+  ITodoRepository,
+  ITodoRepositoryType,
+  TodoRepository
+} from "./TodoRepository";

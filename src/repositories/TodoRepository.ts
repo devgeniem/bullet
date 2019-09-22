@@ -1,7 +1,7 @@
-import Todo from '../models/Todo';
-import { injectable } from 'inversify';
+import { injectable } from "inversify";
+import Todo from "../models/Todo";
 
-export const ITodoRepositoryType = 'ITodoRepository';
+export const ITodoRepositoryType = "ITodoRepository";
 
 export interface ITodoRepository {
   getTodos(): Promise<Todo[]>;
@@ -9,8 +9,7 @@ export interface ITodoRepository {
 
 @injectable()
 export class TodoRepository implements ITodoRepository {
-
-  async getTodos(): Promise<Todo[]> {
-    return await Todo.query();
+  public async getTodos(): Promise<Todo[]> {
+    return Todo.query();
   }
 }

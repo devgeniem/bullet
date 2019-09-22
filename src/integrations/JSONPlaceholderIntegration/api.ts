@@ -1,19 +1,18 @@
-import { create } from 'apisauce';
-
+import { create } from "apisauce";
 
 const api = create({
-  baseURL: 'https://jsonplaceholder.typicode.com',
-  headers: { Accept: 'application/json' },
+  baseURL: "https://jsonplaceholder.typicode.com",
+  headers: { Accept: "application/json" }
 });
 
-export const getPhotos = async () : Promise<any> => {
-  return await api.get('/photos?_limit=20');
+export const getPhotos = async (): Promise<any> => {
+  return api.get("/photos?_limit=20");
 };
 
 export const getPhotoById = async (id: number): Promise<any> => {
-  return await api.get(`/photos/${Math.ceil(id)}`);
+  return api.get(`/photos/${Math.ceil(id)}`);
 };
 
-export const getPosts = async () : Promise<any> => {
-  return await api.get('/posts?_limit=20');
+export const getPosts = async (): Promise<any> => {
+  return api.get("/posts?_limit=20");
 };

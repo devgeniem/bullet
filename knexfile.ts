@@ -1,24 +1,22 @@
 // Config environment variables using dotenv
-require("ts-node/register")
+require("ts-node/register");
 
-require('dotenv').config();
-
+require("dotenv").config();
 
 // Update with your config settings.
 module.exports = {
-
   development: {
-    client: 'mysql',
+    client: "mysql",
     connection: {
       host: process.env.MYSQL_HOST,
       user: process.env.MYSQL_USER,
       password: process.env.MYSQL_PASSWORD,
-      database: process.env.MYSQL_DATABASE,
+      database: process.env.MYSQL_DATABASE
     },
-    seeds: {
-      directory: './seeds/dev'
+    seeds: {
+      directory: "./seeds/dev"
     }
-  },
+  }
 
   // staging: {
   //   client: 'postgresql',
@@ -51,5 +49,4 @@ module.exports = {
   //     tableName: 'knex_migrations'
   //   }
   // }
-
 };

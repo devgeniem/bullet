@@ -1,6 +1,5 @@
-import { injectable } from 'inversify';
-import * as api from './api';
-
+import { injectable } from "inversify";
+import * as api from "./api";
 
 export interface Post {
   id: number;
@@ -9,7 +8,7 @@ export interface Post {
   body: string;
 }
 
-export const IJSONPlaceholderPostsType = 'IJSONPlaceholderPosts';
+export const IJSONPlaceholderPostsType = "IJSONPlaceholderPosts";
 
 export interface IJSONPlaceholderPosts {
   getPosts(): Promise<Post[]>;
@@ -17,11 +16,9 @@ export interface IJSONPlaceholderPosts {
 
 @injectable()
 export class JSONPlaceholderPosts implements IJSONPlaceholderPosts {
-
-  async getPosts(): Promise<Post[]> {
+  public async getPosts(): Promise<Post[]> {
     const response = await api.getPosts();
-    if (!response.ok) throw new Error('Could not retrieve posts.');
+    if (!response.ok) { throw new Error("Could not retrieve posts."); }
     return response.data;
   }
-
 }

@@ -1,6 +1,5 @@
-import { injectable } from 'inversify';
-import * as api from './api';
-
+import { injectable } from "inversify";
+import * as api from "./api";
 
 export interface User {
   id: number;
@@ -9,7 +8,7 @@ export interface User {
   avatar: string;
 }
 
-export const IReqResInType = 'IReqResInType';
+export const IReqResInType = "IReqResInType";
 
 export interface IReqResIn {
   getUsers(): Promise<User[]>;
@@ -17,11 +16,9 @@ export interface IReqResIn {
 
 @injectable()
 export class ReqResIn implements IReqResIn {
-
-  async getUsers(): Promise<User[]> {
+  public async getUsers(): Promise<User[]> {
     const response = await api.getUsers();
-    if (!response.ok) throw new Error('Could not retrieve users from ReqRes.');
+    if (!response.ok) { throw new Error("Could not retrieve users from ReqRes."); }
     return response.data;
   }
-
 }

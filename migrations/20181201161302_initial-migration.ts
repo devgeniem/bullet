@@ -1,4 +1,4 @@
-import * as Knex from 'knex'
+import * as Knex from "knex";
 
 export async function up(knex: Knex) {
   return knex.schema.createTable("todos", table => {
@@ -7,8 +7,8 @@ export async function up(knex: Knex) {
     table.string("description");
     table.dateTime("due").defaultTo(knex.fn.now());
   });
-};
+}
 
 export async function down(knex: Knex) {
   return knex.schema.dropTableIfExists("todos");
-};
+}

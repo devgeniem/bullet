@@ -1,11 +1,10 @@
-import { create } from 'apisauce';
-
+import { create } from "apisauce";
 
 const api = create({
-  baseURL: 'https://reqres.in/api',
-  headers: { Accept: 'application/json' },
+  baseURL: "https://reqres.in/api",
+  headers: { Accept: "application/json" }
 });
 
-export const getUsers = async () : Promise<any> => {
-  return await api.get('/users');
+export const getUsers = async (): Promise<any> => {
+  return api.get("/users");
 };
