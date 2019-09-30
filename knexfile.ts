@@ -20,6 +20,7 @@ module.exports = {
     stub: "migrations/template.ts"
   },
   seeds: {
-    directory: "./seeds/dev"
+    directory: "./seeds/dev",
+    stub: "./seeds/sample-data.ts"
   }
 };
