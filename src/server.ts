@@ -4,12 +4,8 @@ import * as dotenv from "dotenv";
 import * as Knex from "knex";
 import * as morgan from "morgan";
 import { Model } from "objection";
-
-import { createExpressServer, useContainer } from "routing-controllers";
-import { PhotoController, TodoController, UserController } from "./controllers";
 import iocContainer from "./inversify.config";
-import { ApiAccessCheck, ErrorHandler } from "./middlewares";
-import createAuthorizationChecker from "./utils/auth/createAuthorizationChecker";
+import { InversifyExpressServer } from "inversify-express-utils";
 
 dotenv.config();
 // TODO knex should be dependency injected
@@ -19,15 +15,9 @@ Model.knex(knex);
 
 const PORT = process.env.PORT || 3001;
 
-useContainer(iocContainer);
+const server = new InversifyExpressServer(iocContainer);
 
-const app = createExpressServer({
-  controllers: [TodoController, PhotoController, UserController],
-  middlewares: [ApiAccessCheck, ErrorHandler],
-  authorizationChecker: createAuthorizationChecker(iocContainer),
-  defaultErrorHandler: false
-});
-
+const app = server.build();
 app.use(morgan("dev"));
 
 app.listen(PORT, () => {

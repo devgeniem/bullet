@@ -9,10 +9,6 @@
     "removeComments": false,
     "sourceMap": true
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src/**/*", "knexfile.ts"],
+  "exclude": ["node_modules"]
 }

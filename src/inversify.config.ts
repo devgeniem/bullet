@@ -1,5 +1,7 @@
+import { UserController } from "./controllers/UserController";
+import { TodoController } from "./controllers/TodoController";
+import { PhotoController } from "./controllers/PhotoController";
 import { Container } from "inversify";
-import { PhotoController, TodoController, UserController } from "./controllers";
 import {
   IJSONPlaceholderGateway,
   IJSONPlaceholderGatewayType,
@@ -20,18 +22,13 @@ import {
   IReqResInType,
   ReqResIn
 } from "./integrations/ReqResIn/ReqResIn";
-import { ApiAccessCheck, ErrorHandler } from "./middlewares";
+
 import {
   ITodoRepository,
   ITodoRepositoryType,
   TodoRepository
 } from "./repositories";
 import { ITodoService, ITodoServiceType, TodoService } from "./services";
-import {
-  ILoggerFactory,
-  ILoggerFactoryType,
-  LoggerFactory
-} from "./utils/LoggerFactory";
 
 const container = new Container();
 container.bind<ITodoRepository>(ITodoRepositoryType).to(TodoRepository);
@@ -49,13 +46,6 @@ container.bind<PhotoController>(PhotoController).toSelf();
 container.bind<TodoController>(TodoController).toSelf();
 container.bind<UserController>(UserController).toSelf();
 container.bind<IReqResIn>(IReqResInType).to(ReqResIn);
-container
-  .bind<ILoggerFactory>(ILoggerFactoryType)
-  .to(LoggerFactory)
-  .inSingletonScope();
-container.bind<ApiAccessCheck>(ApiAccessCheck).toSelf();
-container.bind<ErrorHandler>(ErrorHandler).toSelf();
-
 if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
   // container.applyMiddleware(makeLoggerMiddleware());
 }

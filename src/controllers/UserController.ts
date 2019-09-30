@@ -1,13 +1,12 @@
 import { inject, injectable } from "inversify";
-import { Get, JsonController } from "routing-controllers";
 import { IReqResIn, IReqResInType } from "../integrations/ReqResIn/ReqResIn";
+import { httpGet, controller } from "inversify-express-utils";
 
-@JsonController("/users")
-@injectable()
+@controller("/user")
 export class UserController {
   constructor(@inject(IReqResInType) private reqResIntegration: IReqResIn) {}
 
-  @Get("/")
+  @httpGet("/")
   public async getAll() {
     return this.reqResIntegration.getUsers();
   }
